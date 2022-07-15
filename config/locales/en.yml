@@ -1,0 +1,93 @@
+en:
+  hello: Hello
+  home: home
+  posts: posts
+  new_posts: new post
+  new_password: new password
+  profile: profile
+  phone: phone
+  address: address
+  blogger: blogger
+  comments: comments
+  avatar: avatar
+  leave_to: leave blank if you don't want to change it
+  submit: submit
+  register_to: Register to our blog page
+  show_this_post: show this post
+  change_password: change my password
+  send_instructions: send me instructions
+  posted: posted 
+  ago: ago
+  create: create
+  edited: edited 
+  ago: ago 
+  back: back to posts
+  sign_in: Sign In
+  sign_up: Sign Up
+  entering: Please enter your login and password!
+  offered_by: Offered by
+  email: Email
+  password: Password
+  remember_me: Remember me
+  created_by: created by
+  forgot_your_password: Forgot your password?
+  name: Name
+  password_confirmation: Repeat Password
+  characters_minimum: characters minimum
+  reset_instructions: Send me reset password instructions
+  offer_a_service: Offer a Service
+  title: Title
+  description: Description
+  price: Price
+  category: Category
+  condition: Condition
+  add_images: Add Images
+  select_category: Select Category
+  select_condition: Select Condition
+  choose_file: Choose a File...
+  service: Service
+  cancel: Cancel
+  account: Account
+  create_post: Create Post
+  categories: [Construction, Cleaning, Education, Pleasure, Health, Fitness, Cooking, Other]
+  conditions: [Contract, No-Contract]
+  sell_your_services: Sell Your Services
+  log_out: Log Out
+  cart: Cart
+  further_details: Further Details
+  add_to_cart: Add to Cart
+  edit: Edit
+  your_cart: Your Cart
+  ready_to_purchase: Ready to Purchase
+  remove_from_cart: Remove From Cart
+  destroy_post: Destroy Post
+  total: Total
+  are_you_sure: Are you sure?
+  edit_user: Edit User
+  password_edit_hint: leave it blank if you don't want to change it
+  current_password: Current password
+  current_password_hint: we need your current password to confirm your changes
+  update: Update
+  total: Total
+  purchasing_services: Purchasing Services...
+  Construction: Construction
+  Cleaning: Cleaning 
+  Education: Education
+  Pleasure: Pleasure
+  Health: Health
+  Fitness: Fitness
+  Cooking: Cooking
+  Other: Other
+  subheading_message: A freelancing platform made by KIU students
+  editing_service: Editing Service
+  your_account: Your Account
+  contact_us: Contact Us
+  card_details: Card Details
+  name_on_card: Name On Card
+  card_number: Card Number
+  expiry_date: Expiry Date
+  cvv: CVV
+  subtotal: Subtotal
+  taxes: Taxes
+  total_incl_taxes: Total(incl taxes)
+  checkout: Checkout

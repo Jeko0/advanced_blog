@@ -1,0 +1,93 @@
+ka:
+  hello: გამარჯობა
+  home: მთავარი
+  posts: პოსტები
+  new_post: დაპოსტე
+  new_password: ახალი პაროლი
+  profile: პროფილი
+  submit: შექმნა
+  avatar: ფოტოსურათი
+  register_to: დარეგისტრირდი ჩვენს ბლოგ საიტზე
+  leave_to: დატოვეთ ცარიელი თუ არ გინდათ ცვლილება
+  send_insturctions: გამომიგზავნეთ ინსტრუქცია
+  phone: ტელეფონის ნომერი
+  address: მისამართი
+  edited: რედაქტირდა
+  ago: წინ
+  posted: დაიპოსტა
+  blogger: ბლოგერი
+  back: დაბრუნება
+  show_this_post: დეტალურად
+  change_password: პაროლის შეცვლა
+  comments: კომენტარები
+  created_by: შექმნა
+  sign_in: შესვლა
+  sign_up: რეგისტრაცია
+  entering: გთხოვთ შეიყვანოთ თქვენი ელ-ფოსტა და პაროლი
+  offered_by: გთავაზობს
+  email: ელ-ფოსტა
+  password: პაროლი
+  remember_me: დამიმახსოვრე
+  forgot_your_password: დაგავიწყდათ პაროლი?
+  name: სახელი
+  password_confirmation: გაიმეორეთ პაროლი
+  characters_minimum: სიმბოლო მინიმუმ
+  reset_instructions: გამომიგზავნე პაროლის აღდგენის ინსტრუქციები
+  offer_a_service: მომსახურების შეთავაზება
+  title: სათაური
+  description: აღწერა
+  price: ღირებულება
+  category: კატეგორია
+  condition: პირობა
+  add_images: დაამატეთ ფოტოები
+  select_category: აირჩიეთ კატეგორია
+  select_condition: აირჩიეთ პირობა
+  choose_file: აირჩიეთ ფაილი...
+  service: მომსახურება
+  cancel: გაუქმება
+  account: ანგარიში
+  create_post: შექმენით პოსტი
+  categories: [მშენებლობა, დასუფთავება, განათლება, სიამოვნება, ჯანმრთელობა, ფიტნესი, კულინარია, სხვა]
+  conditions: [კონტრაქტი, უკონტრაქტო]
+  sell_your_services: მომსახურების შეთავაზება
+  log_out: გამოსვლა
+  cart: კალათა
+  further_details: დამატებითი დეტალები
+  add_to_cart: კალათაში დამატება
+  edit: რედაქტირება
+  your_cart: თქვენი კალათა
+  ready_to_purchase: მზად ვარ შევიძინო
+  remove_from_cart: კალათიდან ამოშლა
+  destroy_post: პოსტის განადგურება
+  total: სულ
+  are_you_sure: დარწმუნებული ხარ?
+  edit_user: ანგარიშის რედაქტირება
+  password_edit_hint: დატოვეთ ცარიელი, თუ არ გსურთ მისი შეცვლა
+  current_password: მიმდინარე პაროლი
+  current_password_hint: ჩვენ გვჭირდება თქვენი მიმდინარე პაროლი ცვლილებების დასადასტურებლად
+  update: განახლება
+  create: შექმნა
+  ago: წინ
+  total: ჯამი
+  purchasing_services: სერვისების შესყიდვა...
+  მშენებლობა: მშენებლობა
+  დასუფთავება: დასუფთავება 
+  განათლება: განათლება
+  სიამოვნება: სიამოვნება 
+  ჯანმრთელობა: ჯანმრთელობა
+  ფიტნესი: ფიტნესი 
+  კულინარია: კულინარია
+  სხვა: სხვა
+  subheading_message: KIU - ს სტუდენტების მიერ შექმნილი ფრილანსინგის პლატფორმა
+  editing_service: მომსახურების რედაქტირება
+  your_account: თქვენი ანგარიში
+  contact_us: დაგვიკავშირდით
+  card_details: ბარათის დეტალები
+  name_on_card: ბარათის სახელი
+  card_number: ბარათის რიცხვი
+  expiry_date: ვადის გასვლა
+  cvv: ცვვ
+  subtotal: ჯამში
+  taxes: ზედმეტი გადასახადი
+  total_incl_taxes: სულ(ზედმეტი გადასახადის ჩათვლით)
+  checkout: შესყიდვა

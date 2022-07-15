@@ -1,0 +1,21 @@
+<%= render post %>
+
+<div>
+  <%= post.edit_if_authorized %>
+  <br><br>
+  <%= post.delete_if_authorized %>
+
+ <p><%= post.post_like_counter %></p>
+  <% post.pre_like %>
+  <%= post.like_dislike%>
+</div>
+
+<div class="watcher">
+  <%= render "comments/form", post: post, comment: post.comments %>
+  <h2><%= t(:comments) %></h2>
+  <hr>
+  <% @comments.each do |comment|%>
+    <%= render "comments/comment", post: post, comment: comment %>
+  <% end %>
+  <br> 
+</div>

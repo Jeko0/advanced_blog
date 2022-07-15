@@ -1,0 +1,16 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong><%= t(:title) %></strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+  <strong><%= t(:body) %></strong>
+    <%= post.body %>
+  </p>
+
+  <p>
+    <strong><%= t(:created_by) %></strong>
+    <%= link_to  post.user.email , user_profile_path(post.user) %>
+  </p>
+</div>

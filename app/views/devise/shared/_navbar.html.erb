@@ -1,0 +1,29 @@
+<header class="p-3 text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><%= link_to t(:home), root_path, class:"nav-link px-2 text-secondary"%></li>
+        <li><%= link_to t(:posts),  posts_path, class:"nav-link px-2 text-secondary" %></li>
+        <li><%= link_to t(:new_post), new_post_path, class:"nav-link px-2 text-secondary"%></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control form-control-dark text-dark bg-light" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <div class="text-end">
+        <% if user_signed_in? %>
+          <%= link_to t(:log_out), destroy_user_session_path, method: :delete, class:"btn btn-warning"  %>
+          <%= link_to t(:profile), user_profile_path(current_user), class:"btn btn-warning" %>
+        <% else %>
+          <%= link_to t(:sign_in), user_session_path, class:"btn btn-warning" %>
+          <%= link_to t(:sign_up), new_user_registration_path, class:"btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
