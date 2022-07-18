@@ -27,10 +27,6 @@ class PostPolicy < ApplicationPolicy
     admin_or_user
   end
 
-  def approve_post?
-    user_is_admin
-  end
-
   def show?
     if post.member_only
       require_user_is_member_or_!
@@ -41,15 +37,15 @@ class PostPolicy < ApplicationPolicy
 
   private 
 
-  def admin_or_author
-    user.admin? || user == post.user
-  end
+    def admin_or_author
+      user.admin? || user == post.user
+    end
 
-  def user_is_admin 
-    user.admin?
-  end
+    def user_is_admin 
+      user.admin?
+    end
 
-  def admin_or_user 
-    user.admin? || user.user?
-  end
+    def admin_or_user 
+      user.admin? || user.user?
+    end
 end

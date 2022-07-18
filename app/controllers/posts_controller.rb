@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :logged_in?, except: :index
+  before_action :require_authorize_post!, only: %i[ show edit update destroy ]
 
   decorates_assigned :posts, :post
   
@@ -24,6 +25,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    authorize @post
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -62,8 +65,12 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    def require_authorize_post!
+      authorize @post
+    end
+
     def post_params
-      params.require(:post).permit(:title, :body, :user_id)
+      params.require(:post).permit(:title, :body, :user_id, :approved)
     end
 end
 
