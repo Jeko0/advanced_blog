@@ -9,6 +9,7 @@
         <li><%= link_to t(:home), root_path, class:"nav-link px-2 text-secondary"%></li>
         <li><%= link_to t(:posts),  posts_path, class:"nav-link px-2 text-secondary" %></li>
         <li><%= link_to t(:new_post), new_post_path, class:"nav-link px-2 text-secondary"%></li>
+        <li><%= link_to "Activities", admin_path, class:"nav-link px-2 text-secondary" if current_user && current_user.admin? %></li>
       </ul>
       <ul class="navbar-nav">
         <%= render "search/form" %>
