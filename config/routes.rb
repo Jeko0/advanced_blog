@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'search/index'
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :posts do 
       resources :comments
       resources :likes
     end
-    
+      
     resources :charges, only: [:new, :create]
     devise_for :users, controllers: {
       sessions: 'users/sessions',
@@ -27,5 +26,17 @@ Rails.application.routes.draw do
 
     #search route
     get "search", to: "search#index"
+
+    #admin route
+    authenticated :user, -> (user) {user.admin?} do 
+      get 'admin', to: "admin#index"
+      get 'admin/posts'
+      get 'admin/users'
+      get 'admin/show_post/:id', to: "admin#show_post", as: :admin_post
     end
+
+    #approving routes
+    get "/users/:user_id/unapprove_posts", to: "posts#unapproved_posts", as: :unapproved_posts
+    post "users/:user_id/approve_post/:id", to: "posts#approve_post", as: :approve_post
+  end
 end
