@@ -30,13 +30,14 @@ Rails.application.routes.draw do
     #admin route
     authenticated :user, -> (user) {user.admin?} do 
       get 'admin', to: "admin#index"
-      get 'admin/posts'
-      get 'admin/users'
-      get 'admin/show_post/:id', to: "admin#show_post", as: :admin_post
+      get 'admin/posts', to: "admin#posts"
+      get 'admin/users', to: "admin#users"
+      get 'admin/show_post/:id', to: "admin#show_post", as: "admin_post"
+      delete "admin/posts/:id/delete", to: "admin#delete", as: "admin_delete_post"
     end
 
     #approving routes
-    get "/users/:user_id/unapprove_posts", to: "posts#unapproved_posts", as: :unapproved_posts
-    post "users/:user_id/approve_post/:id", to: "posts#approve_post", as: :approve_post
+    get "/posts/:id/unapprove_posts", to: "admin#unapproved_posts", as: :unapproved_posts
+    post "/posts/:id/approved_posts", to: "admin#approve_post", as: :approve_post
   end
 end
