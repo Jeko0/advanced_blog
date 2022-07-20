@@ -28,11 +28,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def show?
-    if post.member_only
-      require_user_is_member_or_!
-    else
-      true
-    end
+    true
   end
 
   private 

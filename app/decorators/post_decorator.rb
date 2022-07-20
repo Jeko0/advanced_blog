@@ -32,9 +32,19 @@ class PostDecorator < ApplicationDecorator
     end 
   end
 
-  # def listing_comments 
-  #   comments.each do |comment|
-  #     h.render "comments/comment", post: post, comment: comment
+  # def is_approved?
+  #   if post.approved
+  #     h.render  "comments/show", post: post
+  #   end 
+  # end
+
+  # def approve_post
+  #   if post.approve
+  #     h.link_to, h.posts_path, class: "btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+  #   elsif current_user.admin?
+  #     h.link_to , h.approve_post_path(post), data: { turbo_method: :post }, class: "btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+  #   else 
+  #     return
   #   end
   # end
 end
