@@ -6,7 +6,9 @@ class PostsController < ApplicationController
   decorates_assigned :posts, :post
   
   def index
-    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 2)
+    @q = Post.ransack(params[:q])
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @posts = @q.result(distinct: true).where(approved: true).paginate(page: params[:page], per_page: 2)
   end
 
   def show
@@ -36,6 +38,7 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+    flash[:notice] = "Post has been submitted And admin will take a look at it"
   end
 
   def update    

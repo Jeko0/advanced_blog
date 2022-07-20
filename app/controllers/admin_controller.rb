@@ -11,20 +11,14 @@ class AdminController < ApplicationController
   def users
     @users = User.all
   end
-  
+
   def approve_post
     @postebi.update(approved: true)
-    redirect_to admin_post_path
-  end
-
-  def post_author 
-    @user = User.find_by(id: params[:id])
-    @q = @user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).where(approved: true).paginate(page: params[:page], per_page: 2)
+    redirect_to admin_posts_path
   end
 
   def delete
-    @post = Post.find(params[:id])
+    @post = Post.includes(:user, :comments).find(params[:id])
     @post.destroy
     flash[:notice] = "Post was successfully deleted"
     redirect_to admin_post_path

@@ -3,7 +3,11 @@ class PostPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      raise Pundit::NotDefinedError, "Cannot scope NilClass"
+      if user != nil && (user.admin?)
+        scope.all
+      else
+        scope.where(approved: true)
+      end
     end
   end
 
