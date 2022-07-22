@@ -7,6 +7,7 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Email</th>
+                 <th scope="col">Remove user</th>
             </tr>
         </thead>
         <tbody>
@@ -14,8 +15,11 @@
                 <tr>
                     <th scope="row"><%= user.id %></th>
                     <td><%= user.email %></td>
+                     <td><%= button_to "Delete", admin_delete_user_path(user), method: :delete, class:"btn btn-danger" %></td>
                 </tr>
             <% end %>
         </tbody>
     </table>
 </div>
+
+<%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
