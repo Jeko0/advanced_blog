@@ -13,8 +13,11 @@ class AdminController < ApplicationController
   end
 
   def approve_post
+    @post = Post.find_by(id: params[:id])
     @postebi.update(approved: true)
-    redirect_to admin_posts_path
+    mail = UsersMailer.approve_post(@post.user_id)
+    mail.deliver_now
+    redirect_to @post
   end
 
   def delete
