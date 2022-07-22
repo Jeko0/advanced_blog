@@ -51,7 +51,10 @@
             </div>
           </div>
         </div>
-        <%= link_to "Add Phone", add_phone_path, class:"btn btn-warning" if current_user == @user %>
+        <div class="profile links" style="display: flex; flex-wrap: wrap;row-gap: 10px; column-gap: 2em; ">
+          <%= link_to "Add Phone", add_phone_path, class:"btn btn-warning" if current_user == @user %>
+          <%= render "charges/new", user: current_user %>
+        <div>
       </div>
     </div>
   </div>

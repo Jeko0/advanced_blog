@@ -18,7 +18,6 @@
         <% if user_signed_in? %>
           <%= link_to t(:log_out), destroy_user_session_path, method: :delete, class:"btn btn-warning"  %>
           <%= link_to t(:profile), user_profile_path(current_user), class:"btn btn-warning" %>
-          <%= link_to t(:vip), new_charges_path(current_user), class:"btn btn-warning" %>
         <% else %>
           <%= link_to t(:sign_in), user_session_path, class:"btn btn-warning" %>
           <%= link_to t(:sign_up), new_user_registration_path, class:"btn btn-warning" %>
