@@ -42,6 +42,9 @@ gem 'delayed_job_active_record'
 gem "daemons"
 gem "sidekiq"
 
+#fast posts 
+gem "faker"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
