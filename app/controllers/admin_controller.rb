@@ -5,12 +5,12 @@ class AdminController < ApplicationController
   end
 
   def posts
-    @posts = Post.all.includes(:user, :comments)
-  end
-  
+    @posts = Post.all.includes(:user, :comments).paginate(page: params[:page], per_page: 5)
+  end 
+
   def users
-    @users = User.all
-  end
+    @users = User.all.includes(:posts, :comments).paginate(page: params[:page], per_page: 5)
+  end 
 
   def approve_post
     @post = Post.find_by(id: params[:id])
@@ -20,11 +20,19 @@ class AdminController < ApplicationController
     redirect_to @post
   end
 
-  def delete
+  def post_delete
     @post = Post.includes(:user, :comments).find(params[:id])
     @post.destroy
     flash[:notice] = "Post was successfully deleted"
     redirect_to admin_post_path
+  end
+
+  def user_delete
+    @users = User.all.includes(:posts, :comments)
+    @user = @users.find(params[:id])
+    @user.destroy 
+    flash[:notice] = "User was successfully deleted!"
+    redirect_to admin_users_path
   end
 
   private
