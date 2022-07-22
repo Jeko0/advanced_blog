@@ -23,11 +23,14 @@ class PostsController < ApplicationController
   def edit
   end
 
-
   def create
     @post = Post.new(post_params)
     @post.user = current_user
     authorize @post
+
+    if post_params[:vip_only]
+      @post.update(vip_only: true)
+    end
 
     respond_to do |format|
       if @post.save
@@ -73,7 +76,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, :approved)
+      params.require(:post).permit(:title, :body, :user_id, :vip_only)
     end
 end
 

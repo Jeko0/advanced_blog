@@ -20,6 +20,14 @@
     <%= form.label t(:description), style: "display: block" %>
     <%= form.text_area :body %>
   </div>
+
+  <% if current_user.vip? || current_user.admin? %>
+    <div>
+      <%= form.check_box :vip_only%>
+      <%= form.label :vip_only %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.submit t(:submit) %>
   </div>

@@ -3,10 +3,10 @@ class PostPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user != nil && (user.admin?)
-        scope.all
-      else
-        scope.where(approved: true)
+      unless user == nil 
+        scope.all if user.admin?
+        scope.where(approved: true) if user.vip?
+        scope.where(approved: true, vip_only: false) if user.user?
       end
     end
   end
@@ -45,7 +45,7 @@ class PostPolicy < ApplicationPolicy
       user.admin?
     end
 
-    def admin_or_user 
-      user.admin? || user.user?
+    def admin_or_user
+      user.admin? || user.user? || user.vip?
     end
 end

@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-        <%= link_to "Add Phone", add_phone_path, class:"btn btn-warning" %>
+        <%= link_to "Add Phone", add_phone_path, class:"btn btn-warning" if current_user == @user %>
       </div>
     </div>
   </div>

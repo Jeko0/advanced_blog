@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :posts do 
       resources :comments
       resources :likes
     end
-      
-    resources :charges, only: [:new, :create]
+
     devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: "users/registrations"
@@ -33,11 +33,12 @@ Rails.application.routes.draw do
       get 'admin/posts', to: "admin#posts"
       get 'admin/users', to: "admin#users"
       get 'admin/show_post/:id', to: "admin#show_post", as: "admin_post"
+      post "admin/posts/post/:id/approve", to: "admin#approve_post", as: "approve_post"
       delete "admin/posts/:id/delete", to: "admin#delete", as: "admin_delete_post"
     end
 
-    #approving routes
-    get "/posts/:id/unapprove_posts", to: "admin#unapproved_posts", as: :unapproved_posts
-    post "/posts/:id/approved_posts", to: "admin#approve_post", as: :approve_post
+    #Stripe routes 
+    get "users/:user_id/charges/new", to: "charges#new", as: :new_charges
+    post "users/:user_id/charges/create", to: "charges#create", as: :charges
   end
 end
