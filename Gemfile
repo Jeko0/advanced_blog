@@ -14,9 +14,15 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'devise'
+
+#page pagination and styling
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
+
+#user avatar
 gem 'carrierwave', '~> 2.0'
+
+#slim
 gem 'slim-rails', '~> 3.5', '>= 3.5.1'
 
 #view logic removal
@@ -44,6 +50,9 @@ gem "sidekiq"
 
 #fast posts 
 gem "faker"
+
+#jobs 
+gem 'whenever', require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
