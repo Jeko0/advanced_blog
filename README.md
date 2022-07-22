@@ -1,24 +1,6 @@
-# README
+# Basic functional blog
+>> with authentication, user roles, payment methods etc... 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**sign up to create your account and confirm your registration with a confirmation link in your mail**
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## after that you can create your first post, which will be looked by an admin and approve it if it's acceptable to the site terms 
