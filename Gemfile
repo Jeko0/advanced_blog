@@ -18,18 +18,29 @@ gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
 gem 'carrierwave', '~> 2.0'
 gem 'slim-rails', '~> 3.5', '>= 3.5.1'
+
 #view logic removal
 gem 'draper'
+
 #internalization
 gem 'i18n'
+
 #phone validation
 gem 'telephone_number'
+
 #payment
 gem 'stripe', '~> 6.5'
+
 #permissions
 gem "pundit", "~> 2.2"
+
 #searching 
 gem 'ransack', '~> 3.2', '>= 3.2.1'
+
+#sending emails 
+gem 'delayed_job_active_record'
+gem "daemons"
+gem "sidekiq"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
