@@ -6,11 +6,11 @@
       <div class="col-lg-4">
         <div class="card mb-8">
           <div class="card-body text-center">
-           <%= image_tag @user.avatar_url if @user.avatar_url %>
-            <h5 class="my-3"><%= @user.email.split("@")[0].capitalize %></h5>
+           <%= image_tag user.avatar_url if user.avatar_url %>
+            <h5 class="my-3"><%= user.email.split("@")[0].capitalize %></h5>
             <p class="text-muted mb-1"><%= t(:blogger) %></p>
-            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-            <% if current_user == @user %>
+            <p class="text-muted mb-4"><%= user.first_address %></p>
+            <% if current_user == user %>
             <%= link_to t(:edit), edit_user_registration_path, class:"btn btn-warning" %>
             <% end %>
           </div>
@@ -24,7 +24,7 @@
                 <p class="mb-0"><%= t(:email) %></p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0"><%= @user.email %></p>
+                <p class="text-muted mb-0"><%= user.email %></p>
               </div>
             </div>
             <hr>
@@ -34,7 +34,7 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                  <% @user.phones.each do |phone| %>
+                  <% user.phones.each do |phone| %>
                     <li><%= phone.number %></li>
                   <%end %>
                 </p>
@@ -46,13 +46,23 @@
                 <p class="mb-0"><%= t(:address) %></p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">#</p>
+                <p class="text-muted mb-0"> 
+                
+                <ul class="list-inside space-y-2">
+                <div id="map" class="d-none"></div>
+                                <% user.first_3address.each do |location| %>
+                                    <%= user.show_location(location) %>
+                                    <span>&nbsp</span>
+                                    <%= user.delete_address(current_user, location.id) %>
+                                <% end %></p>
+                                
               </div>
             </div>
           </div>
         </div>
         <div class="profile links" style="display: flex; flex-wrap: wrap;row-gap: 10px; column-gap: 2em; ">
-          <%= link_to "Add Phone", add_phone_path, class:"btn btn-warning" if current_user == @user %>
+          <%= link_to "Add Phone", add_phone_path, class:"btn btn-warning" if current_user == user %>
+          <%= link_to "Add location", add_location_path %>
           <%= render "charges/new", user: current_user %>
         <div>
       </div>
@@ -63,7 +73,7 @@
 <h1 style="text-align: center;"><%= t(:posts)%></h1>
 <hr>
 <div class="profile-posts" >
-  <% @user.posts.each do |post| %>
+  <% user.posts.each do |post| %>
   <p><%= link_to post.title, post %></p>
   <% end %>
 </div>

@@ -41,5 +41,12 @@ Rails.application.routes.draw do
     #Stripe routes 
     get "users/:user_id/charges/new", to: "charges#new", as: :new_charges
     post "users/:user_id/charges/create", to: "charges#create", as: :charges
+
+    #google maps 
+    get "/users/:user_id/locations/all", to: "locations#index", as: :locations
+    get "/users/locations/show/:id", to: "locations#show", as: :show_location
+    get "users/locations/add", to: "locations#new", as: :add_location
+    post "users/locations/add", to: "locations#create", as: :create_location
+    delete "users/:user_id/locations/delete/:id", to: "locations#destroy", as: :destroy_address
   end
 end

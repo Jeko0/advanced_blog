@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  decorates_assigned :user
   def index
     @posts = Post.all
   end
