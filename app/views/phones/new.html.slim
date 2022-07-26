@@ -1,0 +1,16 @@
+section.vh-100
+  .container.py-5.h-100
+    .row.d-flex.justify-content-center.align-items-center.h-100
+      .col-12.col-md-8.col-lg-6.col-xl-5
+        .card.shadow-2-strong[style="border-radius: 1rem;"]
+          .card-body.p-5.text-center
+            h3.mb-5
+              | Add Phone Number
+            = form_with model: @phone, url: add_phone_path, local: true, data: { turbo: false } do |form|
+              .form-outline.mb-4
+                = form.text_field :number, placeholder: "number", class: "form-control form-control-lg"
+              .form-outline.mb-4
+                .form-group.mb-6
+                  .mb-3.xl:w-96
+                    = render partial: 'country'
+              = form.submit "add", class: "btn btn-primary btn-lg btn-block"

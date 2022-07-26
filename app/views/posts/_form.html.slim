@@ -1,0 +1,22 @@
+= form_with(model: post) do |form|
+  - if post.errors.any?
+    div[style="color: red"]
+      h2
+        = pluralize(post.errors.count, "error")
+        |  prohibited this post from being saved:
+      ul
+        - post.errors.each do |error|
+          li
+            = error.full_message
+  div
+    = form.label t(:title), style: "display: block"
+    = form.text_field :title
+  div
+    = form.label t(:description), style: "display: block"
+    = form.text_area :body
+  - if current_user.vip? || current_user.admin?
+    div
+      = form.check_box :vip_only
+      = form.label :vip_only
+  div
+    = form.submit t(:submit)

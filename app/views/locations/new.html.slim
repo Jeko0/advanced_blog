@@ -1,0 +1,12 @@
+#map
+  = form_with model: @location, url: create_location_path do |form|
+	div
+    = form.text_field :street, placeholder: "street", style:"margin-top: 10px;"
+	div
+    = form.text_field :city, placeholder: "city", style:"margin-top:10px;"
+	div
+    = form.text_field :state, placeholder: "state", style:"margin-top:10px;"
+	div
+    = form.text_field :country, placeholder: "country", style:"margin-top:10px;"
+	div
+    = form.submit "add", class: "btn btn-warning", style:"margin-top: 10px;"

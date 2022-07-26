@@ -1,0 +1,67 @@
+h1[style="text-align: center; margin-top: 10px;"]
+  =t(:profile)
+hr
+section[style="background-color: #eee; margin-top: 50px;"]
+  .container.py-5
+    .row
+      .col-lg-4
+        .card.mb-8
+          .card-body.text-center
+            = user.profile_picture
+            h5.my-3
+              = user.email.split("@")[0].capitalize
+            p.text-muted.mb-1
+              = t(:blogger)
+            p.text-muted.mb-4
+              = user.first_address
+            = user.edit_profile
+      .col-lg-8
+        .card.mb-4
+          .card-body
+            .row
+              .col-sm-3
+                p.mb-0
+                  = t(:email)
+              .col-sm-9
+                p.text-muted.mb-0
+                  = user.email
+            hr
+            .row
+              .col-sm-3
+                p.mb-0
+                  = t(:phone)
+              .col-sm-9
+                p.text-muted.mb-0
+                  - user.phones.each do |phone|
+                    li
+                      = phone.number
+            hr
+            .row
+              .col-sm-3
+                p.mb-0
+                  = t(:address)
+              .col-sm-9
+                p.text-muted.mb-0
+
+                ul.list-inside.space-y-2
+
+                #map.d-none
+                - user.first_two_address.each do |location|
+                  = user.show_location(location)
+                  span
+                    | &nbsp
+                  = user.delete_address(current_user, location.id)
+        .profile.links[style="display: flex; flex-wrap: wrap;row-gap: 10px; column-gap: 2em; "]
+           = user.add_phone
+           = user.add_location
+           = user.become_vip  
+          
+        
+
+h1[style="text-align: center;"]
+  = t(:posts)
+hr
+.profile-posts
+  - user.posts.each do |post|
+    p
+      = link_to post.title, post

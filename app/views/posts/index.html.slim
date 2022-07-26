@@ -1,0 +1,11 @@
+h1
+  = t(:posts)
+#posts
+  - @posts.each do |post|
+    = render post
+    p
+      |  Likes: 
+      = post.likes.count
+    p
+      = link_to t(:show_this_post), post, class:"btn btn-warning"
+= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
