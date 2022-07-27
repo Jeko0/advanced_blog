@@ -32,9 +32,9 @@ section[style="background-color: #eee; margin-top: 50px;"]
                   = t(:phone)
               .col-sm-9
                 p.text-muted.mb-0
-                  - user.phones.each do |phone|
-                    li
-                      = phone.number
+                  - user.phones.each do |phone|      
+                     = phone.number
+                     = user.delete_number(phone.id, current_user)
             hr
             .row
               .col-sm-3

@@ -1,4 +1,5 @@
 class PhonesController < ApplicationController
+  decorates_assigned :phones, :phone
 
   def new
     @phone = Phone.new()
@@ -17,7 +18,7 @@ class PhonesController < ApplicationController
   def destroy
     @phone = Phone.find_by(id: params[:id])
     @phone.destroy
-    redirect_to profile_path(current_user)
+    redirect_to user_profile_path
   end
 
   private

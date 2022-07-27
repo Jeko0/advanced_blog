@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     #phoning routes
     get "/user_profile/:id/add_phone", to: "phones#new", as: "add_phone"
     post "/user_profile/:id/add_phone", to: "phones#create"
+    delete "users/:user_id/mobile_phone/delete/:id", to: "phones#destroy", as: :delete_phone
 
     #search route
     get "search", to: "search#index"

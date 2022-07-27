@@ -28,9 +28,9 @@ class PostsController < ApplicationController
     @post.user = current_user
     authorize @post
 
-    if post_params[:vip_only]
-      @post.update(vip_only: true)
-    end
+    @post.update(vip_only: true) if post_params[:vip_only]
+
+    @post.update(approved: true ) if @post.user.role == "admin"
 
     respond_to do |format|
       if @post.save
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
-    flash[:notice] = "Post has been submitted And admin will take a look at it"
+    flash[:notice] = "Post has been submitted And admin will take a look at it" unless current_user.role = "admin"
   end
 
   def update    

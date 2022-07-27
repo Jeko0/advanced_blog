@@ -50,6 +50,15 @@ class UserDecorator < ApplicationDecorator
       locations_longitude_param: "#{location.longitude}"
     } 
   end
+
+  def delete_number(phone_id, current_user)
+    if is_user_admin_or_current_user?(current_user)
+      link_to t(:delete), delete_phone_path(self.id, phone_id), class:"btn btn-danger",  data:{
+        turbo_method: :delete
+      } 
+    end
+  end
+
   private
     def is_user_current_user?(current_user)
       self == current_user
