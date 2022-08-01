@@ -24,3 +24,10 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+#for test bug 
+RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include FactoryBot::Syntax::Methods
+end
