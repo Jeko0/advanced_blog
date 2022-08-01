@@ -1,94 +1,60 @@
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
-  let(:post) { descriebd_class.new }
+RSpec.describe PostsController, type: :controller do  
+  let(:user) { FactoryBot.create(:user)}
+  let(:new_post) { FactoryBot.attributes_for(:post)}
+  let(:mypost) { FactoryBot.create(:post) }
 
+  before :each do 
+    sign_in(user)
+  end 
 
-  context "GET /new" do
-    it "renders a successful response" do
-      get new_post_url
-      expect(response).to be_successful
-    end
+  context "Before action" do
+    it { should use_before_action(:set_post) }
+
+    it { should use_before_action(:logged_in?) }
+
+    it { should use_before_action(:require_authorize_post!) }
   end
 
-  context "GET /edit" do
-    it "renders a successful response" do
-      post = Post.create! valid_attributes
-      get edit_post_url(post)
-      expect(response).to be_successful
-    end
+  context "GET #index" do
+    before { get :index }
+    it { should render_template("index") }
   end
 
-  context "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Post" do
-        expect {
-          post posts_url, params: { post: valid_attributes }
-        }.to change(Post, :count).by(1)
-      end
-
-      it "redirects to the created post" do
-        post posts_url, params: { post: valid_attributes }
-        expect(response).to redirect_to(post_url(Post.last))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Post" do
-        expect {
-          post posts_url, params: { post: invalid_attributes }
-        }.to change(Post, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post posts_url, params: { post: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
+  context "GET #new" do 
+    before { get :new }
+    it { should render_template(:new) }
   end
 
-  context "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+  context "Post #Create" do
+    before { post :create, params: { post: new_post } }
+
+    it { should redirect_to(post_path(Post.last)) }
+
+    it { should set_flash }
+  end
+
+  context "Patch #update" do
+    before { patch :update, params: { id: mypost.id, post: { :title => "new title" } }
+      mypost.reload
       }
 
-      it "updates the requested post" do
-        post = Post.create! valid_attributes
-        patch post_url(post), params: { post: new_attributes }
-        post.reload
-        skip("Add assertions for updated state")
-      end
+    it { expect(mypost.title).to eq("new title") }
 
-      it "redirects to the post" do
-        post = Post.create! valid_attributes
-        patch post_url(post), params: { post: new_attributes }
-        post.reload
-        expect(response).to redirect_to(post_url(post))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        post = Post.create! valid_attributes
-        patch post_url(post), params: { post: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
+    it { should set_flash }
   end
 
-  context "DELETE /destroy" do
-    it "destroys the requested post" do
-      post = Post.create! valid_attributes
-      expect {
-        delete post_url(post)
-      }.to change(Post, :count).by(-1)
-    end
+  context "Delete #destroy" do
+    before { delete :destroy, params: {
+      id: mypost.id ,
+      post: new_post
+     }
+     mypost.destroy
+   }
 
-    it "redirects to the posts list" do
-      post = Post.create! valid_attributes
-      delete post_url(post)
-      expect(response).to redirect_to(posts_url)
-    end
+   it { should redirect_to(root_path)}
+
+   it { should set_flash }
   end
 end
