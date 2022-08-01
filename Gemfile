@@ -60,6 +60,7 @@ gem "geocoder"
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -71,5 +72,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "shoulda-matchers", "~> 5.0"
+  gem "rails-controller-testing"
 end
 
