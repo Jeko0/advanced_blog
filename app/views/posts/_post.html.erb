@@ -10,7 +10,9 @@
   </p>
 
   <p>
-    <strong><%= t(:created_by) %></strong>
-    <%= link_to  post.user.email , user_profile_path(post.user) %>
+    <% if current_user %>
+      <strong><%= t(:created_by) %></strong>
+      <%= link_to  post.user.email , user_profile_path(post.user) %>
+    <% end %>
   </p>
 </div>
