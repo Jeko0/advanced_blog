@@ -57,6 +57,9 @@ gem 'whenever', require: false
 #google maps 
 gem "geocoder"
 
+#RESTful api 
+gem 'grape'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
