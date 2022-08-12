@@ -14,6 +14,8 @@ module TestBlog
     config.generators do |g| 
       g.template_engine :erb
     end
+
+    config.active_job.queue_adapter = Rails.env.production? ? :sidekiq : :async 
   end
 end
 

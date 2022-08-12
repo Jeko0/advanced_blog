@@ -14,9 +14,7 @@ class AdminController < ApplicationController
 
   def approve_post
     @post = Post.find_by(id: params[:id])
-    @postebi.update(approved: true)
-    mail = UsersMailer.approve_post(@post.user_id)
-    mail.deliver_now
+    @postebi.update(approved: true) if UsersMailer.approve_post(@post.user_id).deliver_later
     redirect_to @post
   end
 

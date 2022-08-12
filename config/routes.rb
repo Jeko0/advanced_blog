@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
+    mount Sidekiq::Web => "/sidekiq"
+    namespace :api do 
+      namespace :v1 do 
+        resources :posts 
+      end
+    end 
+
+
     resources :posts do 
       resources :comments
       resources :likes
